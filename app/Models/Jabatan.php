@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Jabatan extends Model
 {
     protected $primaryKey = 'id_jabatan';
+
     public $incrementing = true;
+
     protected $keyType = 'int';
 
     protected $fillable = ['nama_jabatan'];

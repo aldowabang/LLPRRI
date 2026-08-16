@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Admin\Unit;
 
 use App\Models\Unit;
@@ -10,8 +11,11 @@ class Index extends Component
     use WithPagination;
 
     public $unitId;
+
     public $nama_unit = '';
+
     public $showModal = false;
+
     public $editMode = false;
 
     protected $rules = [

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Admin\User;
 
 use App\Models\Pegawai;
@@ -12,19 +13,26 @@ class Index extends Component
     use WithPagination;
 
     public $userId;
+
     public $name = '';
+
     public $email = '';
+
     public $password = '';
+
     public $role = 'pegawai';
+
     public $pegawai_id;
+
     public $showModal = false;
+
     public $editMode = false;
 
     protected function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255' . ($this->userId ? '|unique:users,email,' . $this->userId : '|unique:users,email'),
+            'email' => 'required|email|max:255'.($this->userId ? '|unique:users,email,'.$this->userId : '|unique:users,email'),
             'password' => $this->editMode ? 'nullable|string|min:8' : 'required|string|min:8',
             'role' => 'required|in:admin,pimpinan,pegawai',
             'pegawai_id' => 'nullable|exists:pegawais,id_pegawai',

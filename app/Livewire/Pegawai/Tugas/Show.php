@@ -1,21 +1,23 @@
 <?php
+
 namespace App\Livewire\Pegawai\Tugas;
 
 use App\Models\Tugas;
 use App\Models\User;
 use App\Services\WhatsAppService;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Show extends Component
 {
     public Tugas $tugas;
 
-    public function mount($id_tugas)
+    public function mount($id_tugas): void
     {
-        $this->tugas = Tugas::with('pegawai')->findOrFail($id_tugas);
+        $this->tugas = Tugas::with(['pegawai', 'crews.pegawai'])->findOrFail($id_tugas);
     }
 
-    public function mulai()
+    public function mulai(): void
     {
         if ($this->tugas->status_tugas === 'belum_mulai') {
             $this->tugas->update(['status_tugas' => 'proses']);
@@ -24,7 +26,7 @@ class Show extends Component
         }
     }
 
-    public function selesai()
+    public function selesai(): void
     {
         if ($this->tugas->status_tugas === 'proses') {
             $this->tugas->update(['status_tugas' => 'selesai']);
@@ -35,7 +37,7 @@ class Show extends Component
                 try {
                     app(WhatsAppService::class)->sendTugasSelesai($this->tugas, $pimpinan);
                 } catch (\Exception $e) {
-                    \Illuminate\Support\Facades\Log::warning('WhatsApp notification failed', [
+                    Log::warning('WhatsApp notification failed', [
                         'error' => $e->getMessage(),
                     ]);
                 }

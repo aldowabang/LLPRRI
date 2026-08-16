@@ -14,13 +14,16 @@ use App\Livewire\Pimpinan\Tugas\Create as PimpinanTugasCreate;
 use App\Livewire\Pimpinan\Tugas\Index as PimpinanTugasIndex;
 use App\Livewire\Pimpinan\Tugas\Show as PimpinanTugasShow;
 use App\Models\Tugas;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::view('/', 'welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $user = auth()->user();
+
         return match ($user->role) {
             'admin' => redirect()->route('admin.dashboard'),
             'pimpinan' => redirect()->route('pimpinan.dashboard'),
@@ -50,12 +53,22 @@ Route::prefix('pimpinan')
         Route::get('/tugases', PimpinanTugasIndex::class)->name('pimpinan.tugases.index');
         Route::get('/tugases/create', PimpinanTugasCreate::class)->name('pimpinan.tugases.create');
         Route::get('/tugases/{id_tugas}', PimpinanTugasShow::class)->name('pimpinan.tugases.show');
+        Route::get('/tugases/{id_tugas}/nota-produksi', function ($id_tugas) {
+            $tugas = Tugas::with(['pegawai', 'crews.pegawai'])->findOrFail($id_tugas);
+
+            $pdf = Pdf::loadView('pimpinan.laporan.nota-produksi-pdf', [
+                'tugas' => $tugas,
+            ]);
+
+            return $pdf->stream('Nota-Produksi-'.Str::slug($tugas->nama_tugas).'.pdf');
+        })->name('pimpinan.tugases.nota-produksi');
         Route::get('/laporan/pdf', function () {
+
             $tugases = Tugas::with('pegawai.unit', 'pegawai.jabatan')
                 ->latest()
                 ->get();
 
-            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('livewire.pimpinan.laporan.pdf', [
+            $pdf = Pdf::loadView('livewire.pimpinan.laporan.pdf', [
                 'tugases' => $tugases,
                 'title' => 'Laporan Tugas - LPP RRI Kupang',
             ]);

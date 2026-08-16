@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Admin\Jabatan;
 
 use App\Models\Jabatan;
@@ -10,8 +11,11 @@ class Index extends Component
     use WithPagination;
 
     public $jabatanId;
+
     public $nama_jabatan = '';
+
     public $showModal = false;
+
     public $editMode = false;
 
     protected $rules = [

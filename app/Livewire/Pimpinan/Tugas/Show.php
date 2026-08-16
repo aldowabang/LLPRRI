@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Pimpinan\Tugas;
 
 use App\Models\Tugas;
@@ -8,16 +9,16 @@ class Show extends Component
 {
     public Tugas $tugas;
 
-    public function mount($id_tugas)
+    public function mount($id_tugas): void
     {
-        $this->tugas = Tugas::with('pegawai')->findOrFail($id_tugas);
+        $this->tugas = Tugas::with(['pegawai', 'crews.pegawai'])->findOrFail($id_tugas);
     }
 
-    public function acc()
+    public function acc(): void
     {
         $this->tugas->update(['status_tugas' => 'acc']);
         $this->tugas->refresh();
-        session()->flash('success', 'Tugas berhasil di-ACC.');
+        session()->flash('success', 'Nota Produksi / Tugas berhasil di-ACC.');
     }
 
     public function render()
