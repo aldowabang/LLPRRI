@@ -84,6 +84,15 @@ Route::prefix('pegawai')
         Route::get('/dashboard', PegawaiDashboard::class)->name('pegawai.dashboard');
         Route::get('/tugases', PegawaiTugasIndex::class)->name('pegawai.tugases.index');
         Route::get('/tugases/{id_tugas}', PegawaiTugasShow::class)->name('pegawai.tugases.show');
+        Route::get('/tugases/{id_tugas}/nota-produksi', function ($id_tugas) {
+            $tugas = Tugas::with(['pegawai', 'crews.pegawai'])->findOrFail($id_tugas);
+
+            $pdf = Pdf::loadView('pimpinan.laporan.nota-produksi-pdf', [
+                'tugas' => $tugas,
+            ]);
+
+            return $pdf->stream('Nota-Produksi-'.Str::slug($tugas->nama_tugas).'.pdf');
+        })->name('pegawai.tugases.nota-produksi');
     });
 
 require __DIR__.'/settings.php';

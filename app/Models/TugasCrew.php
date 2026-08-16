@@ -13,6 +13,7 @@ class TugasCrew extends Model
         'id_tugas',
         'id_pegawai',
         'peran',
+        'status',
     ];
 
     public function tugas(): BelongsTo
@@ -23,6 +24,28 @@ class TugasCrew extends Model
     public function pegawai(): BelongsTo
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai', 'id_pegawai');
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return match ($this->status) {
+            'belum_mulai' => 'Belum Mulai',
+            'proses' => 'Proses',
+            'selesai' => 'Selesai',
+            'acc' => 'ACC',
+            default => '-',
+        };
+    }
+
+    public function getStatusColorAttribute(): string
+    {
+        return match ($this->status) {
+            'belum_mulai' => 'gray',
+            'proses' => 'yellow',
+            'selesai' => 'blue',
+            'acc' => 'green',
+            default => 'gray',
+        };
     }
 
     public function getPeranLabelAttribute(): string

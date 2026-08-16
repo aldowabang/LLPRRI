@@ -28,6 +28,8 @@ class Index extends Component
 
     public $editMode = false;
 
+    public array $pegawais = [];
+
     protected function rules(): array
     {
         return [
@@ -43,7 +45,6 @@ class Index extends Component
     {
         return view('livewire.admin.user.index', [
             'users' => User::with('pegawai')->orderBy('id')->paginate(10),
-            'pegawais' => Pegawai::orderBy('nama_pegawai')->get(),
         ]);
     }
 
@@ -51,6 +52,7 @@ class Index extends Component
     {
         $this->reset(['userId', 'name', 'email', 'password', 'role', 'pegawai_id']);
         $this->editMode = false;
+        $this->loadPegawais();
         $this->showModal = true;
         $this->dispatch('modal-show', name: 'user-form');
     }
@@ -65,8 +67,24 @@ class Index extends Component
         $this->role = $user->role;
         $this->pegawai_id = $user->pegawai_id;
         $this->editMode = true;
+        $this->loadPegawais();
         $this->showModal = true;
         $this->dispatch('modal-show', name: 'user-form');
+    }
+
+    private function loadPegawais(): void
+    {
+        $usedIds = User::whereNotNull('pegawai_id')
+            ->when($this->editMode && $this->userId, function ($q) {
+                $q->where('id', '!=', $this->userId);
+            })
+            ->pluck('pegawai_id')
+            ->toArray();
+
+        $this->pegawais = Pegawai::whereNotIn('id_pegawai', $usedIds)
+            ->orderBy('nama_pegawai')
+            ->get()
+            ->toArray();
     }
 
     public function save()

@@ -11,15 +11,40 @@
             <flux:subheading>Nota Produksi No: {{ $tugas->nomor_nota ?? '-' }}</flux:subheading>
         </div>
         <div class="flex gap-2">
-            @if ($tugas->status_tugas === 'belum_mulai')
+            <flux:button href="{{ route('pegawai.tugases.nota-produksi', $tugas->id_tugas) }}" target="_blank" variant="primary" icon="document-text">
+                Cetak Nota Produksi (PDF)
+            </flux:button>
+            @if ($myCrew && $myCrew->status === 'belum_mulai')
                 <flux:button wire:click="mulai" variant="primary" color="yellow">Mulai Tugas</flux:button>
             @endif
-            @if ($tugas->status_tugas === 'proses')
+            @if ($myCrew && $myCrew->status === 'proses')
                 <flux:button wire:click="selesai" variant="primary" color="green">Tandai Selesai</flux:button>
             @endif
             <flux:button href="{{ route('pegawai.tugases.index') }}" variant="subtle">Kembali</flux:button>
         </div>
     </div>
+
+    @if ($myCrew)
+        <div class="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4">
+            <div class="flex items-center gap-3">
+                <span class="text-sm font-medium text-blue-800 dark:text-blue-200">Peran Anda:</span>
+                <span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-200">
+                    {{ $myCrew->peran_label }}
+                </span>
+                <span class="text-sm text-blue-600 dark:text-blue-300">—</span>
+                <span class="text-sm font-medium text-blue-800 dark:text-blue-200">Status:</span>
+                <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+                    {{ match($myCrew->status) {
+                        'belum_mulai' => 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200',
+                        'proses' => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300',
+                        'selesai' => 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300',
+                        default => 'bg-gray-100 text-gray-800',
+                    } }}">
+                    {{ $myCrew->status_label }}
+                </span>
+            </div>
+        </div>
+    @endif
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div class="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
