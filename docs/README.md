@@ -6,6 +6,7 @@
 - [Setup Docker](DOCKER.md)
 - [Kontribusi](CONTRIBUTING.md)
 - [Deployment](DEPLOYMENT.md)
+- [Manual Book per Tampilan (berdasar role)](manual-book/README.md)
 
 ## Ringkasan Proyek
 
@@ -66,7 +67,8 @@ docs/
 ├── ARCHITECTURE.md    # Arsitektur dan struktur aplikasi
 ├── DOCKER.md          # Panduan setup Docker
 ├── CONTRIBUTING.md    # Panduan kontribusi
-└── DEPLOYMENT.md      # Panduan deployment
+├── DEPLOYMENT.md      # Panduan deployment
+└── manual-book/       # Manual penggunaan per tampilan per role
 ```
 
 ## Status Proyek

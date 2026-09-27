@@ -14,6 +14,7 @@ use App\Livewire\Pimpinan\Tugas\Create as PimpinanTugasCreate;
 use App\Livewire\Pimpinan\Tugas\Index as PimpinanTugasIndex;
 use App\Livewire\Pimpinan\Tugas\Show as PimpinanTugasShow;
 use App\Models\Tugas;
+use App\Services\ManualBookPdfService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -96,3 +97,15 @@ Route::prefix('pegawai')
     });
 
 require __DIR__.'/settings.php';
+
+// Manual Book PDF (satu berkas dari docs/manual-book)
+Route::middleware(['auth', 'verified', 'role:admin,pimpinan'])->group(function () {
+    Route::get('/manual-book/pdf', function (ManualBookPdfService $service) {
+        $pdf = Pdf::loadView('manual-book.pdf', [
+            'chapters' => $service->chapters(),
+            'printedAt' => now()->format('d/m/Y'),
+        ])->setPaper('a4', 'portrait');
+
+        return $pdf->download('Manual-Book-Sistem-Tugas-RRI-Kupang.pdf');
+    })->name('manual-book.pdf');
+});

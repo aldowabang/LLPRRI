@@ -28,7 +28,10 @@
     <div class="mt-8">
         <div class="flex items-center justify-between">
             <flux:heading size="lg">Tugas Terbaru</flux:heading>
-            <flux:button href="{{ route('pimpinan.tugases.create') }}" variant="primary">Buat Tugas</flux:button>
+            <div class="flex gap-2">
+                <flux:button href="{{ route('manual-book.pdf') }}" variant="subtle" icon="document-arrow-down">Manual Book (PDF)</flux:button>
+                <flux:button href="{{ route('pimpinan.tugases.create') }}" variant="primary">Buat Tugas</flux:button>
+            </div>
         </div>
         <div class="mt-4 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700">
             <table class="min-w-full divide-y divide-zinc-200 dark:divide-zinc-700">

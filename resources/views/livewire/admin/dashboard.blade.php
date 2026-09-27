@@ -17,10 +17,11 @@
         </div>
     </div>
 
-    <div class="mt-8 flex gap-4">
+    <div class="mt-8 flex flex-wrap gap-4">
         <flux:button href="{{ route('admin.units.index') }}" variant="primary">Kelola Unit</flux:button>
         <flux:button href="{{ route('admin.jabatans.index') }}" variant="primary">Kelola Jabatan</flux:button>
         <flux:button href="{{ route('admin.pegawais.index') }}" variant="primary">Kelola Pegawai</flux:button>
         <flux:button href="{{ route('admin.users.index') }}" variant="primary">Kelola User</flux:button>
+        <flux:button href="{{ route('manual-book.pdf') }}" variant="subtle" icon="document-arrow-down">Manual Book (PDF)</flux:button>
     </div>
 </div>
