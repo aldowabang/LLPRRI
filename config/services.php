@@ -35,9 +35,12 @@ return [
         ],
     ],
 
-    'waha' => [
-        'url' => env('WAHA_URL', 'http://localhost:3000'),
-        'session' => env('WAHA_SESSION', 'default'),
+    'fonnte' => [
+        'url' => env('FONNTE_URL', 'https://api.fonnte.com/send'),
+        'token' => env('WHATSAPP_API_KEY'),
+        'sender' => env('WHATSAPP_NUMBER'),
+        'country_code' => env('FONNTE_COUNTRY_CODE', '62'),
+        'delay' => env('FONNTE_DELAY', '2'),
     ],
 
 ];

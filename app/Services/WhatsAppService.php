@@ -12,16 +12,30 @@ class WhatsAppService
 {
     protected string $baseUrl;
 
-    protected string $session;
+    protected ?string $token;
+
+    protected string $countryCode;
+
+    protected string $delay;
 
     public function __construct()
     {
-        $this->baseUrl = config('services.waha.url', 'http://localhost:3000');
-        $this->session = config('services.waha.session', 'default');
+        $this->baseUrl = (string) config('services.fonnte.url', 'https://api.fonnte.com/send');
+        $this->token = config('services.fonnte.token');
+        $this->countryCode = (string) config('services.fonnte.country_code', '62');
+        $this->delay = (string) config('services.fonnte.delay', '2');
     }
 
     public function sendTugasBaru(Tugas $tugas, Pegawai $pegawai, ?string $peran = null): bool
     {
+        if (blank($pegawai->no_hp)) {
+            Log::warning('WhatsApp skipped: pegawai has no phone number', [
+                'id_pegawai' => $pegawai->id_pegawai,
+            ]);
+
+            return false;
+        }
+
         $phone = $this->formatPhone($pegawai->no_hp);
         $peranText = $peran ? ' (Peran: *'.ucfirst(str_replace('_', ' ', $peran)).'*)' : '';
 
@@ -62,6 +76,14 @@ class WhatsAppService
 
     public function sendTugasSelesai(Tugas $tugas, User $pimpinan): bool
     {
+        if (blank($tugas->pegawai?->no_hp)) {
+            Log::warning('WhatsApp skipped: pegawai has no phone number', [
+                'id_tugas' => $tugas->id_tugas,
+            ]);
+
+            return false;
+        }
+
         $phone = $this->formatPhone($tugas->pegawai->no_hp);
 
         $message = "✅ *Konfirmasi Tugas Selesai*\n\n"
@@ -77,27 +99,38 @@ class WhatsAppService
 
     protected function sendMessage(string $phone, string $message): bool
     {
+        if (blank($this->token)) {
+            Log::warning('WhatsApp skipped: WHATSAPP_API_KEY is not configured');
+
+            return false;
+        }
+
         try {
-            $response = Http::timeout(5)
-                ->post("{$this->baseUrl}/api/{$this->session}/send-text", [
-                    'chatId' => $phone,
-                    'text' => $message,
+            // Fonnte API: https://docs.fonnte.com/api-send-message/
+            $response = Http::asForm()
+                ->withHeaders(['Authorization' => $this->token])
+                ->timeout(10)
+                ->post($this->baseUrl, [
+                    'target' => $phone,
+                    'message' => $message,
+                    'countryCode' => $this->countryCode,
+                    'delay' => $this->delay,
                 ]);
 
-            if ($response->successful()) {
-                Log::info("WhatsApp message sent to {$phone}");
+            if ($response->successful() && $response->json('status') === true) {
+                Log::info("WhatsApp fonnte message sent to {$phone}");
 
                 return true;
             }
 
-            Log::error('WhatsApp API error', [
+            Log::error('WhatsApp fonnte API error', [
                 'status' => $response->status(),
                 'body' => $response->body(),
             ]);
 
             return false;
         } catch (\Exception $e) {
-            Log::error('WhatsApp send failed', [
+            Log::error('WhatsApp fonnte send failed', [
                 'phone' => $phone,
                 'error' => $e->getMessage(),
             ]);
@@ -106,9 +139,9 @@ class WhatsAppService
         }
     }
 
-    protected function formatPhone(string $phone): string
+    protected function formatPhone(?string $phone): string
     {
-        $phone = preg_replace('/[^0-9]/', '', $phone);
+        $phone = preg_replace('/[^0-9]/', '', (string) $phone);
 
         if (str_starts_with($phone, '0')) {
             $phone = '62'.substr($phone, 1);
@@ -116,6 +149,6 @@ class WhatsAppService
             $phone = '62'.$phone;
         }
 
-        return $phone.'@c.us';
+        return $phone;
     }
 }
