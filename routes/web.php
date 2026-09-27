@@ -14,6 +14,7 @@ use App\Livewire\Pimpinan\Tugas\Create as PimpinanTugasCreate;
 use App\Livewire\Pimpinan\Tugas\Index as PimpinanTugasIndex;
 use App\Livewire\Pimpinan\Tugas\Show as PimpinanTugasShow;
 use App\Models\Tugas;
+use App\Models\User;
 use App\Services\ManualBookPdfService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,17 @@ Route::prefix('admin')
         Route::get('/jabatans', JabatanIndex::class)->name('admin.jabatans.index');
         Route::get('/pegawais', PegawaiIndex::class)->name('admin.pegawais.index');
         Route::get('/users', UserIndex::class)->name('admin.users.index');
+        Route::get('/users/pdf', function () {
+            $users = User::with('pegawai.unit', 'pegawai.jabatan')
+                ->orderBy('id')
+                ->get();
+
+            $pdf = Pdf::loadView('livewire.admin.laporan.users-pdf', [
+                'users' => $users,
+            ]);
+
+            return $pdf->download('laporan-data-user.pdf');
+        })->name('admin.users.pdf');
     });
 
 // Pimpinan Routes

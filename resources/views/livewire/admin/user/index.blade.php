@@ -1,7 +1,10 @@
 <div>
     <div class="flex items-center justify-between">
         <flux:heading size="xl">Manajemen User</flux:heading>
-        <flux:button wire:click="openCreate" variant="primary">Tambah User</flux:button>
+        <div class="flex gap-2">
+            <flux:button href="{{ route('admin.users.pdf') }}" variant="subtle" icon="document-arrow-down">Unduh PDF</flux:button>
+            <flux:button wire:click="openCreate" variant="primary">Tambah User</flux:button>
+        </div>
     </div>
 
     @if (session('success'))

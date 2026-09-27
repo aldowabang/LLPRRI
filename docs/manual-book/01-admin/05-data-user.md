@@ -69,7 +69,21 @@ Berdasarkan `User/Index.php` dan blade baris 13-75:
 | Tambah User | `openCreate()` → modal kosong + daftar pegawai tersedia |
 | Edit | `openEdit(id)` → modal terisi, password kosong |
 | Hapus | `delete(id)` + `wire:confirm="Hapus user ini?"` → hapus akun login |
+| Unduh PDF (subtle, header) | → `admin.users.pdf`, unduh rekap semua akun |
 | Batal / Simpan | tutup / validasi + tulis DB |
+
+## 4b. Laporan PDF Data User
+
+- **URL**: `/admin/users/pdf` (route `admin.users.pdf`, closure
+  `routes/web.php`): `User::with('pegawai.unit','pegawai.jabatan')
+  ->orderBy('id')->get()` → `Pdf::loadView('livewire.admin.laporan.users-pdf')`
+  → `download('laporan-data-user.pdf')`. Akses khusus `admin`.
+- **Isi**: kop LPP RRI KUPANG + judul + waktu cetak + total akun; tabel
+  No | Nama | Email | Role (badge merah/biru/hijau) | Pegawai | NIP | Unit |
+  Jabatan | Status (Terverifikasi/Belum dari `email_verified_at`); footer TTD.
+  Nilai `-` bila relasi kosong. **Password tidak dicantumkan** (hanya hash
+  tersimpan, tak berguna + berisiko).
+- **Cara pakai**: buka Data User → klik **Unduh PDF** → file terunduh otomatis.
 
 ## 5. Langkah Penggunaan
 
