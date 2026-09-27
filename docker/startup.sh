@@ -3,6 +3,13 @@ set -e
 
 echo "Starting RRI Application..."
 
+# Drop stale caches first (e.g. host bind-mount may carry require-dev
+# providers like laravel/pail that are not installed with --no-dev).
+# Must run BEFORE any artisan command, otherwise artisan itself fatals.
+rm -f bootstrap/cache/packages.php bootstrap/cache/services.php \
+    bootstrap/cache/config.php bootstrap/cache/routes.php \
+    bootstrap/cache/events.php
+
 # Clear cached config so .env changes take effect
 php artisan config:clear
 php artisan route:clear
@@ -32,11 +39,20 @@ echo "MySQL is ready."
 echo "Running migrations..."
 php artisan migrate --force
 
-# Install npm dependencies and build assets
-echo "Installing npm dependencies..."
-npm install
-echo "Building frontend assets..."
-npm run build
+# Frontend assets are built at image build time. The ./:/app bind-mount
+# hides the image's public/build, so build at runtime only as fallback
+# when the host has no built manifest (keeps restarts fast).
+if [ ! -f public/build/manifest.json ]; then
+  echo "Building frontend assets (manifest missing)..."
+  if [ ! -d node_modules ]; then
+    echo "Installing npm dependencies..."
+    npm install
+  fi
+  echo "Building frontend assets..."
+  npm run build
+else
+  echo "Frontend assets already built, skipping npm build."
+fi
 
 # Cache configuration
 echo "Caching configuration..."

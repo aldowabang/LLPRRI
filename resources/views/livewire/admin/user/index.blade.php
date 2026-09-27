@@ -63,7 +63,7 @@
             <flux:select wire:model="pegawai_id" label="Pegawai (opsional)">
                 <option value="">Tidak dikaitkan</option>
                 @foreach ($pegawais as $pegawai)
-                    <option value="{{ $pegawai->id_pegawai }}">{{ $pegawai->nama_pegawai }} - {{ $pegawai->nip }}</option>
+                    <option value="{{ $pegawai['id_pegawai'] }}">{{ $pegawai['nama_pegawai'] }} - {{ $pegawai['nip'] }}</option>
                 @endforeach
             </flux:select>
             <div class="flex justify-end gap-2">

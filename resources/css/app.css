@@ -29,15 +29,15 @@
 }
 
 @theme {
-    --color-accent: var(--color-pink-600);
-    --color-accent-content: var(--color-pink-600);
+    --color-accent: var(--color-blue-600);
+    --color-accent-content: var(--color-blue-600);
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-pink-600);
-        --color-accent-content: var(--color-pink-400);
+        --color-accent: var(--color-blue-600);
+        --color-accent-content: var(--color-blue-400);
         --color-accent-foreground: var(--color-white);
     }
 }

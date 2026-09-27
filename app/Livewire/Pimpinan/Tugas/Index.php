@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Pimpinan\Tugas;
 
 use App\Models\Tugas;
@@ -10,6 +11,7 @@ class Index extends Component
     use WithPagination;
 
     public $search = '';
+
     public $status = '';
 
     public function render()

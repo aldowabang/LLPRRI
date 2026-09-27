@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Unit extends Model
 {
     protected $primaryKey = 'id_unit';
+
     public $incrementing = true;
+
     protected $keyType = 'int';
 
     protected $fillable = ['nama_unit'];

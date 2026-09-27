@@ -42,9 +42,20 @@ COPY docker/nginx.conf /etc/nginx/sites-available/default
 # 5. Copy application files
 COPY . /app
 
+# 5b. Drop stale Laravel caches from host (may reference require-dev
+# packages like laravel/pail that are absent with --no-dev)
+RUN rm -f bootstrap/cache/packages.php bootstrap/cache/services.php \
+    bootstrap/cache/config.php bootstrap/cache/routes.php \
+    bootstrap/cache/events.php
+
 # 6. Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
-    --no-scripts --prefer-dist
+    --no-scripts --prefer-dist \
+    && php artisan package:discover --ansi --no-interaction
+
+# 6b. Build frontend assets at image build time
+RUN if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi \
+    && npm run build
 
 # 7. Fix storage & cache permissions
 RUN mkdir -p storage/framework/{sessions,views,cache} \

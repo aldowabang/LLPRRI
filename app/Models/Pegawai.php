@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Pegawai extends Model
 {
     protected $primaryKey = 'id_pegawai';
+
     public $incrementing = true;
+
     protected $keyType = 'int';
 
     protected $fillable = [
@@ -41,5 +43,10 @@ class Pegawai extends Model
     public function tugases(): HasMany
     {
         return $this->hasMany(Tugas::class, 'id_pegawai');
+    }
+
+    public function tugasCrews(): HasMany
+    {
+        return $this->hasMany(TugasCrew::class, 'id_pegawai', 'id_pegawai');
     }
 }

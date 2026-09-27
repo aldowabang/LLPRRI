@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Admin;
 
 use App\Models\Jabatan;

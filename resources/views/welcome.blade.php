@@ -4,18 +4,18 @@
     @include('partials.head')
     <style>
         :root {
-            --pink-50: #fdf2f8;
-            --pink-100: #fce7f3;
-            --pink-200: #fbcfe8;
-            --pink-300: #f9a8d4;
-            --pink-400: #f472b6;
-            --pink-500: #ec4899;
-            --pink-600: #db2777;
-            --pink-700: #be185d;
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-300: #93c5fd;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, #831843 0%, #9d174d 30%, #be185d 60%, #ec4899 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 30%, #2563eb 60%, #3b82f6 100%);
             position: relative;
         }
 
@@ -23,9 +23,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 20% 50%, rgba(251, 207, 232, 0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(244, 114, 182, 0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 80%, rgba(190, 24, 93, 0.1) 0%, transparent 50%);
+            background: radial-gradient(ellipse at 20% 50%, rgba(191, 219, 254, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
         }
 
         .card-hover {
@@ -33,7 +33,7 @@
         }
         .card-hover:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15), 0 8px 20px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15), 0 8px 20px rgba(0, 0, 0, 0.06);
         }
 
         .role-card {
@@ -41,32 +41,32 @@
         }
         .role-card:hover {
             transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 16px 48px rgba(236, 72, 153, 0.12);
-            border-color: rgba(236, 72, 153, 0.3);
+            box-shadow: 0 16px 48px rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
-        .btn-pink {
-            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        .btn-blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
-        .btn-pink::before {
+        .btn-blue::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .btn-pink:hover::before {
+        .btn-blue:hover::before {
             opacity: 1;
         }
-        .btn-pink:hover {
+        .btn-blue:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
         }
-        .btn-pink > * {
+        .btn-blue > * {
             position: relative;
             z-index: 1;
         }
@@ -147,8 +147,8 @@
             animation: badgePulse 3s ease-in-out infinite;
         }
         @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(236, 72, 153, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
         }
 
         .icon-float {
@@ -159,7 +159,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #ec4899, #db2777, #be185d);
+            background: linear-gradient(135deg, #3b82f6, #2563eb, #2563eb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -167,11 +167,11 @@
 
         .section-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
         }
 
         .cta-gradient {
-            background: linear-gradient(135deg, #831843 0%, #9d174d 40%, #be185d 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 40%, #2563eb 100%);
             position: relative;
             overflow: hidden;
         }
@@ -179,7 +179,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(244, 114, 182, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
         }
 
         .footer-gradient {
@@ -221,29 +221,29 @@
 <body class="min-h-screen bg-white text-zinc-900">
 
     {{-- Navbar --}}
-    <nav class="nav-blur border-b border-pink-100 sticky top-0 z-50">
+    <nav class="nav-blur border-b border-blue-100 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-3">
-                    <div class="flex items-center justify-center size-9 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-lg shadow-pink-200">
-                        <x-app-logo-icon class="size-5 fill-current" />
+                    <div class="flex items-center justify-center size-10 rounded-xl bg-white shadow-lg p-1">
+                        <x-app-logo-icon class="h-8 w-auto" />
                     </div>
                     <div>
                         <span class="font-bold text-sm leading-tight text-zinc-800">LPP RRI Kupang</span>
-                        <span class="block text-[10px] text-pink-500 font-medium leading-tight">Sistem Manajemen Tugas</span>
+                        <span class="block text-[10px] text-blue-500 font-medium leading-tight">Sistem Manajemen Tugas</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn-pink inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-xl">
+                            <a href="{{ route('dashboard') }}" class="btn-blue inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-xl">
                                 <span class="flex items-center gap-2">
                                     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6z" /></svg>
                                     Dashboard
                                 </span>
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn-pink inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-xl">
+                            <a href="{{ route('login') }}" class="btn-blue inline-flex items-center px-5 py-2 text-sm font-semibold text-white rounded-xl">
                                 <span class="flex items-center gap-2">
                                     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" /></svg>
                                     Masuk
@@ -259,9 +259,9 @@
     {{-- Hero Section --}}
     <section class="hero-gradient relative overflow-hidden">
         <div class="absolute inset-0">
-            <div class="floating-orb size-96 bg-pink-300 top-10 -left-20" style="animation-delay: 0s;"></div>
-            <div class="floating-orb size-72 bg-rose-400 top-40 right-10" style="animation-delay: 2s;"></div>
-            <div class="floating-orb size-64 bg-fuchsia-300 bottom-10 left-1/3" style="animation-delay: 4s;"></div>
+            <div class="floating-orb size-96 bg-blue-300 top-10 -left-20" style="animation-delay: 0s;"></div>
+            <div class="floating-orb size-72 bg-indigo-400 top-40 right-10" style="animation-delay: 2s;"></div>
+            <div class="floating-orb size-64 bg-cyan-300 bottom-10 left-1/3" style="animation-delay: 4s;"></div>
             <div class="particle" style="left: 10%; animation-duration: 12s; animation-delay: 0s;"></div>
             <div class="particle" style="left: 25%; animation-duration: 15s; animation-delay: 1s;"></div>
             <div class="particle" style="left: 40%; animation-duration: 11s; animation-delay: 3s;"></div>
@@ -277,27 +277,27 @@
                     Lembaga Penyiaran Publik
                 </div>
                 <h1 class="hero-text-animate-delay-1 text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-                    Sistem Manajemen<br>Tugas <span class="text-pink-200">LPP RRI Kupang</span>
+                    Sistem Manajemen<br>Tugas <span class="text-blue-200">LPP RRI Kupang</span>
                 </h1>
-                <p class="hero-text-animate-delay-2 mt-6 text-lg text-pink-100/80 max-w-2xl mx-auto leading-relaxed">
+                <p class="hero-text-animate-delay-2 mt-6 text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
                     Platform terpusat untuk mengelola, mendistribusikan, dan memantau pekerjaan harian seluruh pegawai LPP RRI Kupang secara efisien dan transparan.
                 </p>
                 <div class="hero-text-animate-delay-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-pink-700 rounded-xl shadow-xl">
+                            <a href="{{ route('dashboard') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-blue-700 rounded-xl shadow-xl">
                                 <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
                                 Buka Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-pink-700 rounded-xl shadow-xl">
+                            <a href="{{ route('login') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-blue-700 rounded-xl shadow-xl">
                                 <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" /></svg>
                                 Masuk ke Sistem
                             </a>
                         @endauth
                     @endif
                 </div>
-                <div class="hero-text-animate-delay-4 mt-12 flex items-center justify-center gap-8 text-pink-200/60 text-sm">
+                <div class="hero-text-animate-delay-4 mt-12 flex items-center justify-center gap-8 text-blue-200/60 text-sm">
                     <div class="flex items-center gap-2">
                         <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
                         Aman & Terpercaya
@@ -324,7 +324,7 @@
     <section class="py-20 sm:py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-xs font-semibold mb-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold mb-4">
                     <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
                     Fitur Unggulan
                 </div>
@@ -336,9 +336,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 {{-- Feature 1 --}}
-                <div class="animate-on-scroll stagger-1 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
+                <div class="animate-on-scroll stagger-1 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Pencatatan Tugas</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -347,9 +347,9 @@
                 </div>
 
                 {{-- Feature 2 --}}
-                <div class="animate-on-scroll stagger-2 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div class="animate-on-scroll stagger-2 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Validasi Pimpinan</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -358,9 +358,9 @@
                 </div>
 
                 {{-- Feature 3 --}}
-                <div class="animate-on-scroll stagger-3 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
+                <div class="animate-on-scroll stagger-3 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Notifikasi WhatsApp</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -369,9 +369,9 @@
                 </div>
 
                 {{-- Feature 4 --}}
-                <div class="animate-on-scroll stagger-4 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                <div class="animate-on-scroll stagger-4 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Laporan & Rekap</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -380,9 +380,9 @@
                 </div>
 
                 {{-- Feature 5 --}}
-                <div class="animate-on-scroll stagger-5 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+                <div class="animate-on-scroll stagger-5 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Manajemen Pengguna</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -391,9 +391,9 @@
                 </div>
 
                 {{-- Feature 6 --}}
-                <div class="animate-on-scroll stagger-6 card-hover p-6 rounded-2xl border border-pink-100 bg-gradient-to-br from-white to-pink-50/50">
-                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-4 shadow-sm">
-                        <svg class="size-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" /></svg>
+                <div class="animate-on-scroll stagger-6 card-hover p-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50">
+                    <div class="icon-float size-11 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-4 shadow-sm">
+                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" /></svg>
                     </div>
                     <h3 class="font-semibold text-zinc-900 mb-2">Tiga Peran Pengguna</h3>
                     <p class="text-sm text-zinc-500 leading-relaxed">
@@ -408,10 +408,10 @@
     <div class="section-divider"></div>
 
     {{-- Roles Section --}}
-    <section class="py-20 sm:py-28 bg-gradient-to-b from-pink-50/50 to-white">
+    <section class="py-20 sm:py-28 bg-gradient-to-b from-blue-50/50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-xs font-semibold mb-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold mb-4">
                     <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
                     Peran Pengguna
                 </div>
@@ -422,8 +422,8 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {{-- Admin --}}
-                <div class="animate-on-scroll stagger-1 role-card text-center p-8 rounded-2xl border border-pink-100 bg-white">
-                    <div class="size-16 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-pink-200">
+                <div class="animate-on-scroll stagger-1 role-card text-center p-8 rounded-2xl border border-blue-100 bg-white">
+                    <div class="size-16 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
                         <svg class="size-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.384 3.18A1.125 1.125 0 014.5 17.36V5.64a1.125 1.125 0 011.536-1.051l5.384 3.18a1.125 1.125 0 010 1.942z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v12m0 0l3-1.5m-3 1.5l-3-1.5" /></svg>
                     </div>
                     <h3 class="text-lg font-bold text-zinc-900 mb-2">Admin</h3>
@@ -433,8 +433,8 @@
                 </div>
 
                 {{-- Pimpinan --}}
-                <div class="animate-on-scroll stagger-2 role-card text-center p-8 rounded-2xl border border-pink-100 bg-white">
-                    <div class="size-16 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-pink-200">
+                <div class="animate-on-scroll stagger-2 role-card text-center p-8 rounded-2xl border border-blue-100 bg-white">
+                    <div class="size-16 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
                         <svg class="size-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
                     </div>
                     <h3 class="text-lg font-bold text-zinc-900 mb-2">Pimpinan</h3>
@@ -444,8 +444,8 @@
                 </div>
 
                 {{-- Pegawai --}}
-                <div class="animate-on-scroll stagger-3 role-card text-center p-8 rounded-2xl border border-pink-100 bg-white">
-                    <div class="size-16 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-pink-200">
+                <div class="animate-on-scroll stagger-3 role-card text-center p-8 rounded-2xl border border-blue-100 bg-white">
+                    <div class="size-16 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
                         <svg class="size-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
                     </div>
                     <h3 class="text-lg font-bold text-zinc-900 mb-2">Pegawai</h3>
@@ -460,23 +460,23 @@
     {{-- CTA Section --}}
     <section class="cta-gradient py-20 relative overflow-hidden">
         <div class="absolute inset-0">
-            <div class="floating-orb size-64 bg-pink-300/20 -top-20 -right-20" style="animation-delay: 0s;"></div>
-            <div class="floating-orb size-48 bg-rose-300/20 bottom-10 -left-10" style="animation-delay: 3s;"></div>
+            <div class="floating-orb size-64 bg-blue-300/20 -top-20 -right-20" style="animation-delay: 0s;"></div>
+            <div class="floating-orb size-48 bg-indigo-300/20 bottom-10 -left-10" style="animation-delay: 3s;"></div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <div class="animate-on-scroll">
                 <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Siap untuk memulai?</h2>
-                <p class="text-pink-200/70 mb-8 max-w-md mx-auto">
+                <p class="text-blue-200/70 mb-8 max-w-md mx-auto">
                     Masuk ke sistem untuk mengelola tugas harian Anda.
                 </p>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-pink-700 rounded-xl shadow-xl">
+                        <a href="{{ route('dashboard') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-blue-700 rounded-xl shadow-xl">
                             Buka Dashboard
                             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-pink-700 rounded-xl shadow-xl">
+                        <a href="{{ route('login') }}" class="btn-white-glow inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-blue-700 rounded-xl shadow-xl">
                             Masuk ke Sistem
                             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                         </a>
@@ -487,16 +487,16 @@
     </section>
 
     {{-- Footer --}}
-    <footer class="footer-gradient py-8 border-t border-pink-100">
+    <footer class="footer-gradient py-8 border-t border-blue-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-2 text-sm text-zinc-500">
-                    <div class="flex items-center justify-center size-6 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500">
-                        <x-app-logo-icon class="size-3.5 fill-current text-white" />
+                    <div class="flex items-center justify-center size-7 rounded-lg bg-white p-0.5 shadow-sm">
+                        <x-app-logo-icon class="h-6 w-auto" />
                     </div>
                     <span>LPP RRI Kupang &copy; {{ date('Y') }}</span>
                 </div>
-                <div class="text-xs text-pink-400 font-medium">
+                <div class="text-xs text-blue-400 font-medium">
                     Sistem Manajemen Tugas
                 </div>
             </div>

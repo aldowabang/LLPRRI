@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Admin\Pegawai;
 
 use App\Models\Jabatan;
@@ -12,14 +13,23 @@ class Index extends Component
     use WithPagination;
 
     public $pegawaiId;
+
     public $id_unit;
+
     public $id_jabatan;
+
     public $nip = '';
+
     public $nama_pegawai = '';
+
     public $jenis_kelamin = 'L';
+
     public $no_hp = '';
+
     public $alamat = '';
+
     public $showModal = false;
+
     public $editMode = false;
 
     protected function rules(): array
@@ -27,7 +37,7 @@ class Index extends Component
         return [
             'id_unit' => 'required|exists:units,id_unit',
             'id_jabatan' => 'required|exists:jabatans,id_jabatan',
-            'nip' => 'required|string|max:30' . ($this->pegawaiId ? '|unique:pegawais,nip,' . $this->pegawaiId . ',id_pegawai' : '|unique:pegawais,nip'),
+            'nip' => 'required|string|max:30'.($this->pegawaiId ? '|unique:pegawais,nip,'.$this->pegawaiId.',id_pegawai' : '|unique:pegawais,nip'),
             'nama_pegawai' => 'required|string|max:100',
             'jenis_kelamin' => 'required|in:L,P',
             'no_hp' => 'required|string|max:20',
